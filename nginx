@@ -1,0 +1,78 @@
+worker_processes auto;  # Number of worker processes
+
+# Error log location
+error_log /var/log/nginx/error.log warn;
+
+# PID file location
+pid /run/nginx/nginx.pid;
+
+# Events context
+events {
+    worker_connections 1024;  # Maximum number of connections per worker process
+}
+
+# HTTP context
+http {
+    # Map directive to set the custom root directory based on the referer
+    map $http_referer $custom_root {
+        default /usr/share/nginx/html;  # Default root directory
+        "~*waitinglist" /home/username/Projects/aiims/flutter/backend/app/build/web;
+        "~*flutter_service_worker" /home/username/Projects/aiims/flutter/backend/app/build/web;
+    }
+
+    include mime.types;  # File extensions and their MIME types
+    default_type application/octet-stream;
+
+    # Log format and location
+    log_format main '$remote_addr - $remote_user [$time_local] "$request" '
+                    '$status $body_bytes_sent "$http_referer" '
+                    '"$http_user_agent" "$http_x_forwarded_for"';
+    access_log /var/log/nginx/access.log main;
+
+    sendfile on;  # Enables efficient file transfers
+    tcp_nopush on;
+    tcp_nodelay on;
+    keepalive_timeout 65;
+    types_hash_max_size 2048;
+    server_names_hash_bucket_size 64;
+    include /etc/nginx/conf.d/*.conf;  # Include additional configuration files
+
+    # Server block
+    server {
+        listen 80;
+        server_name localhost;  # Server name
+
+        # Proxy for waitinglist requests
+        location /waitinglist/ {
+            proxy_pass http://127.0.0.1:5000/waitinglist/;
+            proxy_set_header Host $host;
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            proxy_set_header X-Forwarded-Proto $scheme;
+            access_log /var/log/nginx/access.log main;
+
+            # Ensure that trailing / in URI is handled correctly
+            rewrite ^/waitinglist/(.*)$ /waitinglist/$1 break;
+        }
+
+        # Proxy for service worker requests
+        location ~* ^/flutter_service_worker\.js$ {
+            proxy_pass http://127.0.0.1:5000;
+            proxy_set_header Host $host;
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            proxy_set_header X-Forwarded-Proto $scheme;
+            access_log /var/log/nginx/access.log main;
+
+            # Ensure that URI is handled correctly
+            rewrite ^/flutter_service_worker\.js$ /flutter_service_worker.js break;
+        }
+
+        # Default location block
+        location / {
+            root $custom_root;
+            try_files $uri $uri/ =404;
+            access_log /var/log/nginx/access.log main;
+        }
+    }
+}

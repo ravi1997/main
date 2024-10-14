@@ -1,0 +1,1666 @@
+{
+	"info": {
+		"_postman_id": "e503dd6f-4166-4df0-8993-cf27ee31fca3",
+		"name": "waitinglist",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25872699"
+	},
+	"item": [
+		{
+			"name": "main",
+			"item": [
+				{
+					"name": "index",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Check if response status is 200 OK\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"// Check if response is successful and set environment variable accordingly\r",
+									"if (pm.response.code === 200) {\r",
+									"    pm.collectionVariables.set(\"main index\", true);\r",
+									"} else {\r",
+									"    pm.collectionVariables.set(\"main index\", false);\r",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseurl}}/",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "account",
+			"item": [
+				{
+					"name": "index",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseurl}}/account/",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"account",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\":\"ravi199777@gmail.com\",\r\n    \"password\":\"Singh@1997\",\r\n    \"user_id\"=user_id,\r\n            inactive=\"0\",\r\n            AccountHasRoles = [\r\n                Role(name=\"SUPERADMIN\")\r\n            ],\r\n            created_by=1,\r\n        )",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseurl}}/account/create/",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"account",
+								"create",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get All",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseurl}}/account/getAll",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"account",
+								"getAll"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "cadre",
+			"item": [
+				{
+					"name": "index",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:5000/waitinglist/cadre/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"waitinglist",
+								"cadre",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getall",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:5000/waitinglist/cadre/getAll",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"waitinglist",
+								"cadre",
+								"getAll"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:5000/waitinglist/cadre/get/1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"waitinglist",
+								"cadre",
+								"get",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Temporary\",\r\n    \"cadreDesignations\": []\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/waitinglist/cadre/create",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"waitinglist",
+								"cadre",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":2,\r\n    \"name\": \"temporary\",\r\n    \"cadreDesignations\": []\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/waitinglist/cadre/update",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"waitinglist",
+								"cadre",
+								"update"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "role",
+			"item": [
+				{
+					"name": "index",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:5000/waitinglist/role/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"waitinglist",
+								"role",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getall",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTcxMTI2NjU5MiwianRpIjoiYWIyZTA1MjktNTA4Yy00N2JiLWI5MTctM2FkY2U1MTFmNDZhIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6MSwibmJmIjoxNzExMjY2NTkyLCJleHAiOjE3MTEyNjc0OTJ9.i_frUBYhlh_4DCxt4bG4faEr6GUBr2dsxX9G6Mk_VIg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:5000/waitinglist/role/getAll",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"waitinglist",
+								"role",
+								"getAll"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:5000/waitinglist/role/get/1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"waitinglist",
+								"role",
+								"get",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Temporary\",\r\n    \"cadreDesignations\": []\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/waitinglist/cadre/create",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"waitinglist",
+								"cadre",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":2,\r\n    \"name\": \"temporary\",\r\n    \"cadreDesignations\": []\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/waitinglist/cadre/update",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"waitinglist",
+								"cadre",
+								"update"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "designation",
+			"item": [
+				{
+					"name": "index",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:5000/waitinglist/designation/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"waitinglist",
+								"designation",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getall",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseurl}}/designation/getAll",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"designation",
+								"getAll"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseurl}}/designation/getAllActive",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"designation",
+								"getAllActive"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Temporary\",\r\n    \"cadreDesignations\": []\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/waitinglist/designation/create",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"waitinglist",
+								"designation",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":2,\r\n    \"name\": \"temporary\",\r\n    \"cadreDesignations\": []\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/waitinglist/cadre/update",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"waitinglist",
+								"cadre",
+								"update"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "department",
+			"item": [
+				{
+					"name": "index",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseurl}}/department/",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"department",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getall",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:5000/waitinglist/department/getAll",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"waitinglist",
+								"department",
+								"getAll"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:5000/waitinglist/department/get/1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"waitinglist",
+								"department",
+								"get",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Computer Facility\",\r\n    \"abbr\": \"CF\",\r\n    \"type\": \"CENTER\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/waitinglist/department/create",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"waitinglist",
+								"department",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":3,\r\n    \"name\": \"Computer Facility\",\r\n    \"abbr\": \"cf\",\r\n    \"type\": \"CENTER\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/waitinglist/department/update",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"waitinglist",
+								"department",
+								"update"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "Login",
+					"item": [
+						{
+							"name": "ADMIN",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"const auth = pm.collectionVariables.get(\"auth index\")\r",
+											"if (auth){\r",
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"// Check if response is successful and set environment variable accordingly\r",
+											"if (pm.response.code === 200) {\r",
+											"    const responseBody = pm.response.json();\r",
+											"    const token = responseBody.access_token; \r",
+											"    pm.collectionVariables.set(\"admin token\", token);\r",
+											"    pm.collectionVariables.set(\"auth login\", true);\r",
+											"} else {\r",
+											"    pm.collectionVariables.set(\"auth login\", false);\r",
+											"}\r",
+											"}\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\":\"ravi199777@outlook.com\",\r\n    \"password\":\"Singh@1997\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseurl}}/auth/login",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"auth",
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "SUPERADMIN",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"const auth = pm.collectionVariables.get(\"auth index\")\r",
+											"if (auth){\r",
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"// Check if response is successful and set environment variable accordingly\r",
+											"if (pm.response.code === 200) {\r",
+											"    const responseBody = pm.response.json();\r",
+											"    const token = responseBody.access_token; \r",
+											"    pm.collectionVariables.set(\"superadmin token\", token);\r",
+											"    pm.collectionVariables.set(\"auth login\", true);\r",
+											"} else {\r",
+											"    pm.collectionVariables.set(\"auth login\", false);\r",
+											"}\r",
+											"}\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\":\"ravi199777@gmail.com\",\r\n    \"password\":\"Singh@1997\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseurl}}/auth/login",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"auth",
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "USER",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"const auth = pm.collectionVariables.get(\"auth index\")\r",
+											"if (auth){\r",
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"// Check if response is successful and set environment variable accordingly\r",
+											"if (pm.response.code === 200) {\r",
+											"    const responseBody = pm.response.json();\r",
+											"    const token = responseBody.access_token; \r",
+											"    pm.collectionVariables.set(\"user token\", token);\r",
+											"    pm.collectionVariables.set(\"auth login\", true);\r",
+											"} else {\r",
+											"    pm.collectionVariables.set(\"auth login\", false);\r",
+											"}\r",
+											"}\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\":\"ravinder.singh@aiims.gov.in\",\r\n    \"password\":\"Singh@1997\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseurl}}/auth/login",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"auth",
+										"login"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "index",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"// Check if response is successful and set environment variable accordingly\r",
+									"if (pm.response.code === 200) {\r",
+									"    pm.collectionVariables.set(\"auth index\", true);\r",
+									"} else {\r",
+									"    pm.collectionVariables.set(\"auth index\", false);\r",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:5000/waitinglist/auth/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"waitinglist",
+								"auth",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "logout",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const authLogin = pm.collectionVariables.get(\"auth login\")\r",
+									"\r",
+									"if(authLogin){\r",
+									"    pm.test(\"Status code is 200\", function () {\r",
+									"        pm.response.to.have.status(200);\r",
+									"    });\r",
+									"\r",
+									"\r",
+									"    if (pm.response.code === 200) {\r",
+									"        pm.collectionVariables.set(\"token\", \"\");\r",
+									"    }\r",
+									"\r",
+									"}\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseurl}}/auth/logout",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"auth",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const auth = pm.collectionVariables.get(\"auth index\")\r",
+									"if (auth){\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"// Check if response is successful and set environment variable accordingly\r",
+									"if (pm.response.code === 200) {\r",
+									"    const responseBody = pm.response.json();\r",
+									"    const token = responseBody.access_token; \r",
+									"    pm.collectionVariables.set(\"token\", token);\r",
+									"    pm.collectionVariables.set(\"auth login\", true);\r",
+									"} else {\r",
+									"    pm.collectionVariables.set(\"auth login\", false);\r",
+									"}\r",
+									"}\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\":\"ravi199777@outlook.com\",\r\n    \"password\":\"Singh@1997\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseurl}}/auth/login",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "user index",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseurl}}/user/",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"user",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstname\":\"Tester\",\r\n    \"middlename\":\"\",\r\n    \"lastname\":\"\",\r\n    \"employee_id\":\"E1111111\",\r\n    \"email\":\"tester@aiims.edu\",\r\n    \"mobile\":\"9899000000\",\r\n    \"designation_id\":1,\r\n    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseurl}}/user/create",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"user",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get All",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseurl}}/user/getAll",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"user",
+								"getAll"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get All Not Verified",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseurl}}/user/getAllNotVerfied",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"user",
+								"getAllNotVerfied"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseurl}}/user/get/2",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"user",
+								"get",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "public",
+			"item": [
+				{
+					"name": "get buildings",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseurl}}/public/getBuildings",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"public",
+								"getBuildings"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get floors",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseurl}}/public/getFloors/1",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"public",
+								"getFloors",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get rooms",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseurl}}/public/getRooms/1",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"public",
+								"getRooms",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get Departments",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseurl}}/public/getDepartments",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"public",
+								"getDepartments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get Units",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseurl}}/public/getUnits/1",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"public",
+								"getUnits",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get Cadre",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseurl}}/public/getCadres",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"public",
+								"getCadres"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get Designations",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseurl}}/public/getDesignations/1",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"public",
+								"getDesignations",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"designation_id\":1,\r\n    \"email\":\"ravinder.singh@aiims.gov.in\",\r\n    \"employee_id\":\"E9999999\",\r\n    \"firstname\":\"ravinder\",\r\n    \"lastname\":\"singh\",\r\n    \"middlename\":\"\",\r\n    \"mobile\":\"9899378106\",\r\n    \"cadre_id\":1,\r\n    \"department_id\":1,\r\n    \"officeAddress_id\":1,\r\n    \"unit_id\":1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseurl}}/public/createUser",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"public",
+								"createUser"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create Account",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\":\"ravinder.singh@aiims.gov.in\",\r\n    \"password\":\"Singh@1997\",\r\n    \"user_id\":2\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseurl}}/public/createAccount",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"public",
+								"createAccount"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ADMIN",
+			"item": [
+				{
+					"name": "Create Building",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"RPC\",\r\n    \"abbr\":\"RPC\",\r\n    \"buildingFloors\":[\r\n        {\r\n            \"name\":\"0\",\r\n            \"abbr\":\"ground\",\r\n            \"floor_rooms\":[\r\n                {\r\n                    \"number\":80\r\n                }\r\n            ]\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseurl}}/admin/createBuilding",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"admin",
+								"createBuilding"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Admin_superadmin",
+			"item": [
+				{
+					"name": "verify user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{baseurl}}/adminSuperAdmin/verifyUser/2",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"adminSuperAdmin",
+								"verifyUser",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "verify Account",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{baseurl}}/adminSuperAdmin/verifyAccount/3",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"adminSuperAdmin",
+								"verifyAccount",
+								"3"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "patient",
+			"item": [
+				{
+					"name": "patient update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "f4c4c69d-8351-4f6a-a85a-703250bd9b60",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"adviceBy\": {\r\n        \"UserAdviceBys\": [],\r\n        \"Usercabins\": [],\r\n        \"cadre_id\": 1,\r\n        \"deleted\": 0,\r\n        \"department_id\": 1,\r\n        \"designation_id\": 1,\r\n        \"email\": \"ravi199777@gmail.com\",\r\n        \"email2\": \"\",\r\n        \"email3\": \"\",\r\n        \"employee_id\": \"E100000\",\r\n        \"firstname\": \"Ravinder\",\r\n        \"id\": 1,\r\n        \"lastname\": \"Singh\",\r\n        \"middlename\": \"\",\r\n        \"mobile\": \"9899378106\",\r\n        \"mobile2\": \"\",\r\n        \"mobile3\": \"\",\r\n        \"status\": 1,\r\n        \"userAccount\": [\r\n            {\r\n                \"AccountHasRoles\": [\r\n                    1\r\n                ],\r\n                \"accountAbove_id\": null,\r\n                \"accountBelongsToUser\": 1,\r\n                \"blocked\": 0,\r\n                \"create_date\": \"2024-07-08T05:57:39\",\r\n                \"deleted\": 0,\r\n                \"deleted_by\": null,\r\n                \"deleted_date\": \"2024-07-08T05:57:39\",\r\n                \"id\": 1,\r\n                \"parent_account\": null,\r\n                \"password\": \"$2b$12$mzYTI/O4SomocRZ9ZM4NGujjcYXg1dMj1KfCem5KUYNYrivhRfdee\",\r\n                \"patientAccount\": [],\r\n                \"status\": 1,\r\n                \"sub_accounts\": [],\r\n                \"user_id\": 1,\r\n                \"username\": \"ravi199777@gmail.com\",\r\n                \"verified_by\": null,\r\n                \"verified_date\": \"2024-07-08T05:57:39\",\r\n                \"wrongAttempt\": 0\r\n            },\r\n            {\r\n                \"AccountHasRoles\": [\r\n                    2\r\n                ],\r\n                \"accountAbove_id\": null,\r\n                \"accountBelongsToUser\": 1,\r\n                \"blocked\": 0,\r\n                \"create_date\": \"2024-07-08T05:57:39\",\r\n                \"deleted\": 0,\r\n                \"deleted_by\": null,\r\n                \"deleted_date\": \"2024-07-08T05:57:39\",\r\n                \"id\": 2,\r\n                \"parent_account\": null,\r\n                \"password\": \"$2b$12$3i3wwzpwftYytVZXudhG9eADNapg8v6vk2DvIJmNjvjETuU06Fzl.\",\r\n                \"patientAccount\": [],\r\n                \"status\": 1,\r\n                \"sub_accounts\": [],\r\n                \"user_id\": 1,\r\n                \"username\": \"ravi199777@outlook.com\",\r\n                \"verified_by\": null,\r\n                \"verified_date\": \"2024-07-08T05:57:39\",\r\n                \"wrongAttempt\": 0\r\n            }\r\n        ],\r\n        \"userBlock\": [],\r\n        \"userCadre\": {\r\n            \"cadreDesignations\": [\r\n                1,\r\n                2,\r\n                3,\r\n                4\r\n            ],\r\n            \"cadreUsers\": [\r\n                1\r\n            ],\r\n            \"deleted\": 0,\r\n            \"deleted_by\": null,\r\n            \"deleted_date\": \"2024-07-08T05:57:39\",\r\n            \"id\": 1,\r\n            \"name\": \"Programmer\"\r\n        },\r\n        \"userCentre\": [],\r\n        \"userDepartment\": {\r\n            \"abbr\": \"RPC\",\r\n            \"deleted\": 0,\r\n            \"deleted_by\": null,\r\n            \"deleted_date\": \"2024-07-08T05:57:39\",\r\n            \"departmentBlocks\": [],\r\n            \"departmentCentres\": [],\r\n            \"departmentHead\": [],\r\n            \"departmentUnits\": [\r\n                1,\r\n                2,\r\n                3,\r\n                4,\r\n                5,\r\n                6,\r\n                7\r\n            ],\r\n            \"departmentUsers\": [\r\n                1\r\n            ],\r\n            \"id\": 1,\r\n            \"name\": \"Dr RP Center for Ophthalmic Sciences\",\r\n            \"type\": \"CENTER\"\r\n        },\r\n        \"userDesignation\": {\r\n            \"abbr\": \"prog\",\r\n            \"cadre\": 1,\r\n            \"cadre_id\": 1,\r\n            \"deleted\": 0,\r\n            \"deleted_by\": null,\r\n            \"deleted_date\": \"2024-07-08T05:57:39\",\r\n            \"designationUsers\": [\r\n                1\r\n            ],\r\n            \"id\": 1,\r\n            \"name\": \"programmer\"\r\n        },\r\n        \"userHeadOfBlock\": [],\r\n        \"userHeadOfCentre\": [],\r\n        \"userHeadOfDepartment\": [],\r\n        \"userHeadOfUnit\": []\r\n    },\r\n    \"anesthesia\": \"YES\",\r\n    \"cabin\":  {\r\n        \"UserAdviceBys\": [],\r\n        \"Usercabins\": [],\r\n        \"cadre_id\": 1,\r\n        \"deleted\": 0,\r\n        \"department_id\": 1,\r\n        \"designation_id\": 1,\r\n        \"email\": \"ravi199777@gmail.com\",\r\n        \"email2\": \"\",\r\n        \"email3\": \"\",\r\n        \"employee_id\": \"E100000\",\r\n        \"firstname\": \"Ravinder\",\r\n        \"id\": 1,\r\n        \"lastname\": \"Singh\",\r\n        \"middlename\": \"\",\r\n        \"mobile\": \"9899378106\",\r\n        \"mobile2\": \"\",\r\n        \"mobile3\": \"\",\r\n        \"status\": 1,\r\n        \"userAccount\": [\r\n            {\r\n                \"AccountHasRoles\": [\r\n                    1\r\n                ],\r\n                \"accountAbove_id\": null,\r\n                \"accountBelongsToUser\": 1,\r\n                \"blocked\": 0,\r\n                \"create_date\": \"2024-07-08T05:57:39\",\r\n                \"deleted\": 0,\r\n                \"deleted_by\": null,\r\n                \"deleted_date\": \"2024-07-08T05:57:39\",\r\n                \"id\": 1,\r\n                \"parent_account\": null,\r\n                \"password\": \"$2b$12$mzYTI/O4SomocRZ9ZM4NGujjcYXg1dMj1KfCem5KUYNYrivhRfdee\",\r\n                \"patientAccount\": [],\r\n                \"status\": 1,\r\n                \"sub_accounts\": [],\r\n                \"user_id\": 1,\r\n                \"username\": \"ravi199777@gmail.com\",\r\n                \"verified_by\": null,\r\n                \"verified_date\": \"2024-07-08T05:57:39\",\r\n                \"wrongAttempt\": 0\r\n            },\r\n            {\r\n                \"AccountHasRoles\": [\r\n                    2\r\n                ],\r\n                \"accountAbove_id\": null,\r\n                \"accountBelongsToUser\": 1,\r\n                \"blocked\": 0,\r\n                \"create_date\": \"2024-07-08T05:57:39\",\r\n                \"deleted\": 0,\r\n                \"deleted_by\": null,\r\n                \"deleted_date\": \"2024-07-08T05:57:39\",\r\n                \"id\": 2,\r\n                \"parent_account\": null,\r\n                \"password\": \"$2b$12$3i3wwzpwftYytVZXudhG9eADNapg8v6vk2DvIJmNjvjETuU06Fzl.\",\r\n                \"patientAccount\": [],\r\n                \"status\": 1,\r\n                \"sub_accounts\": [],\r\n                \"user_id\": 1,\r\n                \"username\": \"ravi199777@outlook.com\",\r\n                \"verified_by\": null,\r\n                \"verified_date\": \"2024-07-08T05:57:39\",\r\n                \"wrongAttempt\": 0\r\n            }\r\n        ],\r\n        \"userBlock\": [],\r\n        \"userCadre\": {\r\n            \"cadreDesignations\": [\r\n                1,\r\n                2,\r\n                3,\r\n                4\r\n            ],\r\n            \"cadreUsers\": [\r\n                1\r\n            ],\r\n            \"deleted\": 0,\r\n            \"deleted_by\": null,\r\n            \"deleted_date\": \"2024-07-08T05:57:39\",\r\n            \"id\": 1,\r\n            \"name\": \"Programmer\"\r\n        },\r\n        \"userCentre\": [],\r\n        \"userDepartment\": {\r\n            \"abbr\": \"RPC\",\r\n            \"deleted\": 0,\r\n            \"deleted_by\": null,\r\n            \"deleted_date\": \"2024-07-08T05:57:39\",\r\n            \"departmentBlocks\": [],\r\n            \"departmentCentres\": [],\r\n            \"departmentHead\": [],\r\n            \"departmentUnits\": [\r\n                1,\r\n                2,\r\n                3,\r\n                4,\r\n                5,\r\n                6,\r\n                7\r\n            ],\r\n            \"departmentUsers\": [\r\n                1\r\n            ],\r\n            \"id\": 1,\r\n            \"name\": \"Dr RP Center for Ophthalmic Sciences\",\r\n            \"type\": \"CENTER\"\r\n        },\r\n        \"userDesignation\": {\r\n            \"abbr\": \"prog\",\r\n            \"cadre\": 1,\r\n            \"cadre_id\": 1,\r\n            \"deleted\": 0,\r\n            \"deleted_by\": null,\r\n            \"deleted_date\": \"2024-07-08T05:57:39\",\r\n            \"designationUsers\": [\r\n                1\r\n            ],\r\n            \"id\": 1,\r\n            \"name\": \"programmer\"\r\n        },\r\n        \"userHeadOfBlock\": [],\r\n        \"userHeadOfCentre\": [],\r\n        \"userHeadOfDepartment\": [],\r\n        \"userHeadOfUnit\": []\r\n    },\r\n\r\n    \"eua\": \" YES\",\r\n    \"eye\": \"ONE-EYE\",\r\n    \"patientEntryDiagnosis\": {\r\n        \"diagnosevalue\":\"GLUCOMA\"\r\n    },\r\n    \"plan\": {\r\n        \"planvalue\":\"SURGERY\"\r\n    },\r\n    \"priority\": \"YES\",\r\n    \"remark\": \"\",\r\n    \"short\": \"\",\r\n    \"patientdemographic\":{\r\n        \"fname\": \"Ravinder\",\r\n        \"gender\": \"Male\",\r\n        \"lname\": \"Singh\",\r\n        \"mname\": \"\",\r\n        \"phoneNo\": \"9899378106\",\r\n        \"phoneNo1\": \"\",\r\n        \"uhid\": \"105026658\"\r\n    },\r\n    \"PatientEntryBelongsToUser\":{\r\n        \"AccountHasRoles\": [\r\n            1\r\n        ],\r\n        \"accountAbove_id\": null,\r\n        \"accountBelongsToUser\": 1,\r\n        \"blocked\": 0,\r\n        \"create_date\": \"2024-07-08T06:35:38\",\r\n        \"deleted\": 0,\r\n        \"deleted_by\": null,\r\n        \"deleted_date\": \"2024-07-08T06:35:38\",\r\n        \"id\": 1,\r\n        \"parent_account\": null,\r\n        \"password\": \"$2b$12$CxFsdVMn7J2iDneAcw9pju0nu.HKcdKW0aPbjvE8Cn1ih1nsd/COi\",\r\n        \"patientAccount\": [],\r\n        \"status\": 1,\r\n        \"sub_accounts\": [],\r\n        \"user_id\": 1,\r\n        \"username\": \"ravi199777@gmail.com\",\r\n        \"verified_by\": null,\r\n        \"verified_date\": \"2024-07-08T06:35:38\",\r\n        \"wrongAttempt\": 0\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/waitinglist/patient/update",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"waitinglist",
+								"patient",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "patient create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"patientdemographic_id\":1,\r\n    \"anesthesia_id\":1,\r\n    \"adviceBy_id\":1,\r\n    \"cabin_id\":1,\r\n    \"plan_id\":1,\r\n    \"eua_id\":1,\r\n    \"eye_id\":1,\r\n    \"priority_id\":1,\r\n    \"short_id\":1,\r\n    \"diagnosis_id\":1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/waitinglist/patiententry/create",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"waitinglist",
+								"patiententry",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "patient getAll",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseurl}}/patiententry/getAll",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"patiententry",
+								"getAll"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "patient delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "18fd6452-f896-4e27-844d-c3b6641d399a",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:5000/waitinglist/patient/1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"waitinglist",
+								"patient",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Request",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"date\":\"2024-07-15\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseurl}}/patiententry/redate/1",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"patiententry",
+								"redate",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "diagnosis",
+			"item": [
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{baseurl}}/diagnosis/create",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"diagnosis",
+								"create"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "patient demographic",
+			"item": [
+				{
+					"name": "fetch",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseurl}}/patientdemographic/fetch/1234567895",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"patientdemographic",
+								"fetch",
+								"1234567895"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{token}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"pm.collectionVariables.set(\"main index\",false)",
+					"pm.collectionVariables.set(\"auth index\",false)",
+					"pm.collectionVariables.set(\"auth login\",false)",
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "token",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "baseurl",
+			"value": "http://127.0.0.1:5000/waitinglist",
+			"type": "string"
+		},
+		{
+			"key": "main index",
+			"value": "false",
+			"type": "string"
+		},
+		{
+			"key": "auth index",
+			"value": "false",
+			"type": "string"
+		},
+		{
+			"key": "auth login",
+			"value": "false",
+			"type": "string"
+		}
+	]
+}
